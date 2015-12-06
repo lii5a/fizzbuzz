@@ -2,9 +2,12 @@ package fizzbuzz;
 
 import com.sun.tools.doclets.formats.html.SourceToHTMLConverter;
 import javafx.application.Application;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -19,23 +22,28 @@ import java.util.Scanner;
 public class Sisinsusin extends Application {
     Stage mangulaud;
     StackPane levelid;
-    VBox kastid;
+    GridPane kastid;
     static int arv = (int)(Math.random()*10);;
 
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         mangulaud = primaryStage;
+        primaryStage.setTitle("Sisin-Susin");
         seadistamangulaud();
         //kysisisendit();
     }
 
     private void seadistamangulaud() {
-        levelid = new StackPane();
-        kastid = new VBox();
-        levelid.getChildren().add(kastid);
+        //mangulaud.setResizable(false); //kui see käiku lasta, ei saa akent suure(ma)ks teha.
+        levelid = new StackPane(); //määran levelite layoutiks stackpane
+        kastid = new GridPane(); //teen uue layouti kastid
+        levelid.getChildren().add(kastid); //panen kastid levelite sisse
+        //kastid.setGridLinesVisible(true);
+        kastid.setAlignment(Pos.CENTER); //kastivärk on akna keskel
+        kastid.setVgap(10);
 
-        Scene fbStseen = new Scene(levelid, 300,400);
+        Scene fbStseen = new Scene(levelid, 350,600); //loon uue stseeni fbStseen, mille layout on levelid (stackpane)
         mangulaud.setScene(fbStseen);
         mangulaud.show();
         mangulaud.setOnCloseRequest(event -> {System.exit(0); });
@@ -44,27 +52,43 @@ public class Sisinsusin extends Application {
         Label genereerinumber = new Label((arvStringiks()));
         genereerinumber.setFont(new Font("Helvetica", 300));
         genereerinumber.setTextFill(Color.web("#FF0000"));
-        //genereerinumber.setTranslateX(50); //viiskend pikslit paremale
-        genereerinumber.setTranslateY(-50); //sada pikslit üles
+        genereerinumber.setTranslateX(50); //viiskend pikslit paremale
+        //genereerinumber.setTranslateY(-50); //sada pikslit üles
 
         Label kasJagub = new Label("JAGUB KOLME VÕI VIIEGA?");
-        kasJagub.setFont(new Font("Helvetica", 10));
-        kasJagub.setTranslateY(90);
-        //kasJagub.setTranslateX(10);
+        kasJagub.setFont(new Font("Helvetica", 20));
+        kasJagub.setTranslateY(-50);
+        //kasJagub.setTranslateX(-0);
 
         Button jagubMolemaga = new Button ("Mõlemaga");
-        jagubMolemaga.setTranslateY(130);
-        jagubMolemaga.setTranslateX(-100);
+        //jagubMolemaga.setTranslateY(-30);
+        //jagubMolemaga.setTranslateX(-100);
 
         Button viiega = new Button ("Viiega");
-        jagubMolemaga.setTranslateY(20);
-        jagubMolemaga.setTranslateX(200);
+        viiega.setTranslateX(110);
+
 
         Button kolmega = new Button ("Kolmega");
-        jagubMolemaga.setTranslateY(130);
-        jagubMolemaga.setTranslateX(100);
+        kolmega.setTranslateX(195);
 
-        levelid.getChildren().addAll(genereerinumber, kasJagub, jagubMolemaga,kolmega, viiega);
+        Label mittekummagagi = new Label ("MITTE KUMMAGAGI? AGA LIIDA TALLE 8.");
+
+        TextField tekstikoht = new TextField();
+        tekstikoht.setPromptText("Kirjuta vastus siia ja vajuta enter/OK");
+
+        Button OK = new Button("OK");
+        OK.setTranslateX(110);
+
+
+        kastid.add(genereerinumber, 2, 1); //veerg, rida
+        kastid.add(kasJagub, 2, 2);
+        kastid.add(jagubMolemaga, 2,2);
+        kastid.add(viiega, 2,2);
+        kastid.add(kolmega, 2,2);
+        kastid.add(mittekummagagi, 2,3);
+        //kastid.add(vastuslabel, 2,4);
+        kastid.add(tekstikoht, 2,4);
+        kastid.add(OK, 2,5);
 
     }
 
