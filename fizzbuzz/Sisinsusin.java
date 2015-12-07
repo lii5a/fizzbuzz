@@ -1,5 +1,6 @@
 package fizzbuzz;
 
+import com.sun.javafx.scene.control.skin.IntegerFieldSkin;
 import com.sun.tools.doclets.formats.html.SourceToHTMLConverter;
 import javafx.application.Application;
 import javafx.geometry.Pos;
@@ -7,11 +8,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 import java.util.Scanner;
@@ -21,33 +24,45 @@ import java.util.Scanner;
  */
 public class Sisinsusin extends Application {
     Stage mangulaud;
-    StackPane levelid;
-    GridPane kastid;
-    static int arv = (int)(Math.random()*10);;
+    //StackPane levelid;
+    static int arv = (int)(Math.random()*10);
+    static int liidetav = (int)(Math.random()*10);
 
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         mangulaud = primaryStage;
+        mangulaud.setOnCloseRequest(event -> {System.exit(0); });
+
         primaryStage.setTitle("Sisin-Susin");
         seadistamangulaud();
         //kysisisendit();
+        //tagasisideTubli();
+    }
+
+    private void tagasisideTubli() {
+        GridPane tubli = new GridPane();
+        tubli.setAlignment(Pos.CENTER);
+        Label oigeVastus = new Label("Tubli! Õige vastus!");
+        Scene tubliStseen = new Scene(tubli, 350,600);
+        mangulaud.setScene(tubliStseen);
+        mangulaud.show();
+        tubli.add(oigeVastus,2,1);
+
     }
 
     private void seadistamangulaud() {
         //mangulaud.setResizable(false); //kui see käiku lasta, ei saa akent suure(ma)ks teha.
-        levelid = new StackPane(); //määran levelite layoutiks stackpane
-        kastid = new GridPane(); //teen uue layouti kastid
-        levelid.getChildren().add(kastid); //panen kastid levelite sisse
+        //levelid = new StackPane(); //määran levelite layoutiks stackpane
+        GridPane kastid = new GridPane(); //teen uue layouti kastid
+        //levelid.getChildren().add(kastid); //panen kastid levelite sisse
         //kastid.setGridLinesVisible(true);
         kastid.setAlignment(Pos.CENTER); //kastivärk on akna keskel
         kastid.setVgap(10);
 
-        Scene fbStseen = new Scene(levelid, 350,600); //loon uue stseeni fbStseen, mille layout on levelid (stackpane)
+        Scene fbStseen = new Scene(kastid, 350,600); //loon uue stseeni fbStseen, mille layout on levelid (stackpane)
         mangulaud.setScene(fbStseen);
         mangulaud.show();
-        mangulaud.setOnCloseRequest(event -> {System.exit(0); });
-
 
         Label genereerinumber = new Label((arvStringiks()));
         genereerinumber.setFont(new Font("Helvetica", 300));
@@ -61,23 +76,76 @@ public class Sisinsusin extends Application {
         //kasJagub.setTranslateX(-0);
 
         Button jagubMolemaga = new Button ("Mõlemaga");
+        jagubMolemaga.setOnMouseClicked(event -> {
+                        if (arv%15==0) {
+            tagasisideTubli(); //todo tulevikus: uus number lihtsalt ja kuhugi skoor tiksuma, pole vahevärki vaja näidata.
+                        }
+                    else {
+                            tagasisideVale();
+                        }
+
+        }
+        );
+
         //jagubMolemaga.setTranslateY(-30);
         //jagubMolemaga.setTranslateX(-100);
 
         Button viiega = new Button ("Viiega");
         viiega.setTranslateX(110);
+        viiega.setOnMouseClicked(event -> {
+                    if (arv%5==0) {
+                        tagasisideTubli(); //todo tulevikus: uus number lihtsalt ja kuhugi skoor tiksuma, pole vahevärki vaja näidata.
+                    }
+                    else {
+                        tagasisideVale();
+                    }
+
+                }
+        );
 
 
         Button kolmega = new Button ("Kolmega");
         kolmega.setTranslateX(195);
 
-        Label mittekummagagi = new Label ("MITTE KUMMAGAGI? AGA LIIDA TALLE 8.");
 
-        TextField tekstikoht = new TextField();
+        kolmega.setOnMouseClicked  (event -> {
+                    if (arv%3==0) {
+                        tagasisideTubli(); //todo tulevikus: uus number lihtsalt ja kuhugi skoor tiksuma, pole vahevärki vaja näidata.
+                    }
+                    else {
+                        tagasisideVale();
+                    }
+
+                }
+        );
+
+        Label mittekummagagi = new Label ("MITTE KUMMAGAGI? AGA LIIDA TALLE " +liidetav+"!");
+        mittekummagagi.setFont(Font.font("Helvetica",FontWeight.BOLD,14));
+
+
+        TextField tekstikoht = new TextField(); //todo: muuda laiust kuidagi väiksemaks
         tekstikoht.setPromptText("Kirjuta vastus siia ja vajuta enter/OK");
 
         Button OK = new Button("OK");
         OK.setTranslateX(110);
+
+
+       OK.setOnMouseClicked(event -> { //todo: kuidas teha nii, et käraks nii enter kui ka klikk-okei? kui see lisada, siis kood ei tööta. OK.setOnMouseClicked (event -> equals(KeyCode.ENTER));
+
+                   double d = Double.parseDouble(tekstikoht.getText()); //selle häki googeldasin siit: http://stackoverflow.com/questions/4753339/convert-textfield-value-to-int
+                   int i = (int)d;
+
+                    if (i==arv+liidetav) {
+                        tagasisideTubli(); //todo tulevikus: uus number lihtsalt ja kuhugi skoor tiksuma, pole vahevärki vaja näidata.
+                    }
+                    else {
+                        tagasisideVale();
+                    }
+
+                }
+        );
+
+
 
 
         kastid.add(genereerinumber, 2, 1); //veerg, rida
@@ -90,6 +158,16 @@ public class Sisinsusin extends Application {
         kastid.add(tekstikoht, 2,4);
         kastid.add(OK, 2,5);
 
+    }
+
+    private void tagasisideVale() {
+        GridPane vale = new GridPane();
+        vale.setAlignment(Pos.CENTER);
+        Label oigeVastus = new Label("Vale puha!");
+        Scene valeStseen = new Scene(vale, 350,600);
+        mangulaud.setScene(valeStseen);
+        mangulaud.show();
+        vale.add(oigeVastus,2,1);
     }
 
     private static void kysisisendit() {
@@ -157,14 +235,21 @@ public class Sisinsusin extends Application {
     }
 
 
+
+
     public String arvStringiks() {
         return String.valueOf(arv); //selle koha üle olen päris uhke. guugeldasin silm krõllis, Stackoverflow ei aidanud. IDE aitas.
     }
 }
 
 
-//todo: võiks skoori pidada
-// nupud ütlevad "sisista" ja "susista" ja "sissussista"
-//võiks ajapiirangu panna
-// võiks anda leveleid valida. et kas 10, 100 või 1000 piires.
-//püüa error kinni, et ikka numbreid sisestaks
+/*todo: võiks skoori pidada
+nupud ütlevad "sisista" ja "susista" ja "sissussista" + hääl
+võiks ajapiirangu panna
+võiks anda leveleid valida. et kas 10, 100 või 1000 piires.
+püüa error kinni, et ikka numbreid sisestaks
+*/
+
+//HEUREKAD
+//leidsin siit soovituse stackide kui kaartide näitamise/peitmisega mitte jamada, vaid ilmutada/kustutada kraami üldse stseenis
+// http://www.javacodegeeks.com/2014/08/javafx-tip-14-stackpane-children-hidden-but-not-gone.html
