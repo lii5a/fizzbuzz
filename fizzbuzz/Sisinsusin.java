@@ -189,6 +189,7 @@ public class Sisinsusin extends Application {
 
             if ((arv%15==0) && (vastus==2)){
                 System.out.println("Õige! See arv jagus nii kolme kui ka viiega");
+                kysisisendit();
             }
             else if ((arv%5==0)&&(vastus==0)){
                 System.out.println("Õige! See arv jagus viiega.");
@@ -235,19 +236,22 @@ public class Sisinsusin extends Application {
     }
 
 
-
-
     public String arvStringiks() {
         return String.valueOf(arv); //selle koha üle olen päris uhke. guugeldasin silm krõllis, Stackoverflow ei aidanud. IDE aitas.
     }
 }
 
 
-/*todo: võiks skoori pidada
+/*todo:
+mäng objektorienteerituks
+mäng tsüklisse
+võiks skoori pidada
+püüa error kinni, et ikka numbreid sisestaks
+
+
 nupud ütlevad "sisista" ja "susista" ja "sissussista" + hääl
 võiks ajapiirangu panna
 võiks anda leveleid valida. et kas 10, 100 või 1000 piires.
-püüa error kinni, et ikka numbreid sisestaks
 */
 
 //HEUREKAD
