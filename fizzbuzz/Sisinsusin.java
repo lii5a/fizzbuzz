@@ -5,9 +5,7 @@ import com.sun.tools.doclets.formats.html.SourceToHTMLConverter;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
@@ -17,6 +15,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.util.Scanner;
 
 /**
@@ -41,15 +40,26 @@ public class Sisinsusin extends Application {
     }
 
     private void tagasisideTubli() {
-        GridPane tubli = new GridPane();
-        tubli.setAlignment(Pos.CENTER);
-        Label oigeVastus = new Label("Tubli! Õige vastus!");
-        Scene tubliStseen = new Scene(tubli, 350,600);
-        mangulaud.setScene(tubliStseen);
-        mangulaud.show();
-        tubli.add(oigeVastus,2,1);
+
+        //dialoogiakent õppisin tegema siin: http://code.makery.ch/blog/javafx-dialogs-official/
+
+
+       Alert tubli = new Alert(Alert.AlertType.INFORMATION);
+        tubli.setTitle("Pasunad ja lilled!");
+        tubli.setHeaderText("Õige vastus! Said ühe punkti juurde!");
+        tubli.showAndWait();
+        seadistamangulaud();
+
 
     }
+
+  /*  private int skoor() {
+        int skoor = 0;
+        if (tagasisideTubli()) {
+            skoor = skoor + 1;
+        }
+        return skoor;
+    }*/
 
     private void seadistamangulaud() {
         //mangulaud.setResizable(false); //kui see käiku lasta, ei saa akent suure(ma)ks teha.
