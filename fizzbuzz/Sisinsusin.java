@@ -16,25 +16,17 @@ import javafx.stage.WindowEvent;
  */
 public class Sisinsusin extends Application {
     Stage mangulaud;
-    static int arv = (int)(Math.random()*10);
-    static int liidetav = (int)(Math.random()*10);
+    Arvutused arvutused = new Arvutused();
+    Tagasiside tagasiside = new Tagasiside();
+
 
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         mangulaud = primaryStage;
         mangulaud.setOnCloseRequest((WindowEvent event) -> {System.exit(0); });
-
         primaryStage.setTitle("Sisin-Susin");
         seadistamangulaud();
-    }
-
-    private void tagasisideTubli() { //siin meetodis kasutatud dialoogiakent õppisin tegema siin: http://code.makery.ch/blog/javafx-dialogs-official/
-
-       Alert tubli = new Alert(Alert.AlertType.INFORMATION);
-        tubli.setTitle("Pasunad ja lilled!");
-        tubli.setHeaderText("Õige vastus! Said ühe punkti juurde!");
-        tubli.showAndWait();
     }
 
   /*  private int skoor() { //proovin siin skoori käima saada.
@@ -57,7 +49,7 @@ public class Sisinsusin extends Application {
 
         // edasi tulevad tekstid ja numbrid ja nupud
 
-        Label genereerinumber = new Label((arvStringiks()));
+        Label genereerinumber = new Label((arvutused.arvStringiks()));
         genereerinumber.setFont(new Font("Helvetica", 300));
         genereerinumber.setTextFill(Color.web("#FF0000"));
         genereerinumber.setTranslateX(50); //viiskend pikslit paremale
@@ -67,27 +59,12 @@ public class Sisinsusin extends Application {
         kasJagub.setTranslateY(-50);
 
         Button jagubMolemaga = new Button ("Mõlemaga");
-        jagubMolemaga.setOnMouseClicked(event -> {
-                        if (arv%15==0) {
-            tagasisideTubli(); //todo tulevikus: uus number lihtsalt ja kuhugi skoor tiksuma, pole vahevärki vaja näidata.
-                        }
-                    else {
-                            tagasisideVale();
-                        }
-
-        }
-        ); //siin lõppeb nupu "Mõlemaga" sündmus ära.
+        jagubMolemaga.setOnMouseClicked(event -> {arvutused.jagubMolemaga();}
+        );
 
         Button viiega = new Button ("Viiega");
         viiega.setTranslateX(110);
-        viiega.setOnMouseClicked(event -> {
-                    if (arv%5==0) {
-                        tagasisideTubli();
-                    }
-                    else {
-                        tagasisideVale();
-                    }
-
+        viiega.setOnMouseClicked(event -> {arvutused.jagubViiega();
                 }
         );
 
@@ -95,18 +72,10 @@ public class Sisinsusin extends Application {
         Button kolmega = new Button ("Kolmega");
         kolmega.setTranslateX(195);
 
-        kolmega.setOnMouseClicked  (event -> {
-                    if (arv%3==0) {
-                        tagasisideTubli();
-                    }
-                    else {
-                        tagasisideVale();
-                    }
-
-                }
+        kolmega.setOnMouseClicked  (event -> {arvutused.jagubKolmega();}
         );
 
-        Label mittekummagagi = new Label ("MITTE KUMMAGAGI? SIIS LIIDA TALLE " +liidetav+":");
+        Label mittekummagagi = new Label ("MITTE KUMMAGAGI? SIIS LIIDA TALLE " +arvutused.liidetav +":");
         mittekummagagi.setFont(Font.font("Helvetica",FontWeight.BOLD,14));
 
         TextField tekstikoht = new TextField();
@@ -117,18 +86,17 @@ public class Sisinsusin extends Application {
         Button OK = new Button("OK");
         OK.setTranslateX(110);
 
-
-       OK.setOnMouseClicked(event -> { //todo: kuidas teha nii, et käraks nii enter kui ka klikk-okei? kui see lisada, siis kood ei tööta. OK.setOnMouseClicked (event -> equals(KeyCode.ENTER));
+       OK.setOnMouseClicked(event ->  {
 
                    double d = Double.parseDouble(tekstikoht.getText()); //selle häki googeldasin siit: http://stackoverflow.com/questions/4753339/convert-textfield-value-to-int
                    int i = (int)d;
 
 
-                       if (i==arv+liidetav) {
-                           tagasisideTubli();
+                       if (i==arvutused.arv+arvutused.liidetav) {
+                           tagasiside.tubli();
                        }
                        else {
-                           tagasisideVale();
+                           tagasiside.pahasti();
                        }
 
                }
@@ -142,27 +110,22 @@ public class Sisinsusin extends Application {
         kastid.add(mittekummagagi, 2,3);
         kastid.add(tekstikoht, 2,4);
         kastid.add(OK, 2,5);
+        OK.setDefaultButton(true); //pärast pikka pusimist sain siit 133 realt idee, kuidas ok-nuppu ühildada enteriga/spacega. macijama. https://gist.github.com/jewelsea/3081826
 
     }
 
-    private void tagasisideVale() {
-        Alert paha = new Alert(Alert.AlertType.INFORMATION);
-        paha.setTitle("Pahasti!");
-        paha.setHeaderText("See läks nüüd vähe mööda. Kaotasid ühe punkti :(");
-        paha.showAndWait();
-    }
-
-    public String arvStringiks() {
-        return String.valueOf(arv); //selle koha üle olen päris uhke. guugeldasin silm krõllis, Stackoverflow ei aidanud. IDE aitas.
-    }
 }
+
 
 
 /*todo:
 mäng tsüklisse
 mäng objektorienteerituks
 skoori pidada ja näidata
-püüa error kinni, et ikka numbreid sisestaks
+püüa error kinni, et ikka numbreid kasti sisestaks
+ok-nupp võiks ka enteri peale reageerida (testi teises ossis)
+ei saa liita liidetavat, kui jagub kolme ja/või viiega.
+
 
 nicetohave:
 nupud ütlevad "sisista" ja "susista" ja "sissussista" + hääl
