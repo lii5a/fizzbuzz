@@ -6,7 +6,7 @@ import javafx.stage.Stage;
 /**
  * Created by lii5a on 24/11/15.
  */
-public class Sisinsusin extends Application {
+public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -19,7 +19,6 @@ public class Sisinsusin extends Application {
 
 /*todo:
 mäng tsüklisse
-mäng objektorienteerituks
 skoori pidada ja näidata
 püüa error kinni, et ikka numbreid kasti sisestaks
 ok-nupp võiks ka enteri peale reageerida (testi teises ossis)
