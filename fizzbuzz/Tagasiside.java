@@ -13,7 +13,7 @@ public class Tagasiside {
         tubli.setTitle("Pasunad ja lilled!");
         tubli.setHeaderText("Õige vastus! Said ühe punkti juurde!");
         tubli.showAndWait();
-        //Start.launch(Start.class); annab errori, et Application launch must not be called more than once
+
     }
 
     public void pahasti() {
