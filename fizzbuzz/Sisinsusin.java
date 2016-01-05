@@ -19,8 +19,6 @@ public class Sisinsusin extends Application {
     Arvutused arvutused = new Arvutused();
     Tagasiside tagasiside = new Tagasiside();
 
-
-
     @Override
     public void start(Stage primaryStage) throws Exception {
         mangulaud = primaryStage;
@@ -37,7 +35,7 @@ public class Sisinsusin extends Application {
         return skoor;
     }*/
 
-    private void seadistamangulaud() {
+    public void seadistamangulaud() {
         //mangulaud.setResizable(false); //kui see käiku lasta, ei saa akent suure(ma)ks teha.
         GridPane kastid = new GridPane(); //teen uue layouti - kastid, sest seal on hea koordinaate määrata, kujundada
         kastid.setAlignment(Pos.CENTER); //kastivärk on akna keskel
@@ -59,7 +57,8 @@ public class Sisinsusin extends Application {
         kasJagub.setTranslateY(-50);
 
         Button jagubMolemaga = new Button ("Mõlemaga");
-        jagubMolemaga.setOnMouseClicked(event -> {arvutused.jagubMolemaga();}
+        jagubMolemaga.setOnMouseClicked(event -> {arvutused.jagubMolemaga();
+                }
         );
 
         Button viiega = new Button ("Viiega");

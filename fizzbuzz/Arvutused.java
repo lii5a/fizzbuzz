@@ -1,5 +1,7 @@
 package fizzbuzz;
 
+import javafx.stage.Stage;
+
 /**
  * Created by lii5a on 04/01/16.
  */
@@ -8,7 +10,6 @@ public class Arvutused {
     static int liidetav = (int)(Math.random()*10);
 
     Tagasiside tagasiside = new Tagasiside();
-    //Main main = new Main();
 
     public void jagubMolemaga() {
         if (arv%15==0) {
