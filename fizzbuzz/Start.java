@@ -14,7 +14,7 @@ import javafx.stage.WindowEvent;
 /**
  * Created by lii5a on 24/11/15.
  */
-public class Sisinsusin extends Application {
+public class Start extends Application {
     Stage mangulaud;
     Arvutused arvutused = new Arvutused();
     Tagasiside tagasiside = new Tagasiside();
