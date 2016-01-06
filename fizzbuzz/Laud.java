@@ -17,15 +17,15 @@ import javafx.stage.WindowEvent;
  * selle klassi viksisin enamjaolt Kristeri pealt maha (viimase praksi GUI-seadistus)
  * https://github.com/KristerV/javaHarjutused/blob/lahendused/src/teema3/SQL_Login/LoginScreen.java
  */
-public class Seadistamangulaud {
+public class Laud {
     Stage mangulaud = new Stage();
 
     Arvutused arvutused = new Arvutused();
     Tagasiside tagasiside = new Tagasiside();
-    Randomid randomid = new Randomid();
+    Random random = new Random();
 
 
-    Seadistamangulaud() {
+    Laud() {
         setupScene();
     }
 
@@ -45,7 +45,7 @@ public class Seadistamangulaud {
 
         // edasi tulevad tekstid ja numbrid ja nupud
 
-        Label genereerinumber = new Label((randomid.arvStringiks()));
+        Label genereerinumber = new Label((random.arvStringiks()));
         genereerinumber.setFont(new Font("Helvetica", 300));
         genereerinumber.setTextFill(Color.web("#FF0000"));
         genereerinumber.setTranslateX(50); //viiskend pikslit paremale
@@ -72,7 +72,7 @@ public class Seadistamangulaud {
         kolmega.setOnMouseClicked  (event -> {arvutused.jagubKolmega();}
         );
 
-        Label mittekummagagi = new Label ("MITTE KUMMAGAGI? SIIS LIIDA TALLE " +randomid.liidetav +":");
+        Label mittekummagagi = new Label ("MITTE KUMMAGAGI? SIIS LIIDA TALLE " + random.liidetav +":");
         mittekummagagi.setFont(Font.font("Helvetica", FontWeight.BOLD,14));
 
         TextField tekstikoht = new TextField();
@@ -89,7 +89,7 @@ public class Seadistamangulaud {
                     int i = (int)d;
 
 
-                    if (i==randomid.arv+randomid.liidetav) {
+                    if (i== random.arv+ random.liidetav) {
                         tagasiside.tubli();
                     }
                     else {

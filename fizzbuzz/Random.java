@@ -3,7 +3,7 @@ package fizzbuzz;
 /**
  * Created by lii5a on 05/01/16.
  */
-public class Randomid {
+public class Random {
 
     static int arv = (int)(Math.random()*10);
     static int liidetav = (int)(Math.random()*10);

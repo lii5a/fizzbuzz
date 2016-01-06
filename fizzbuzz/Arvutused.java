@@ -1,7 +1,5 @@
 package fizzbuzz;
 
-import javafx.stage.Stage;
-
 /**
  * Created by lii5a on 04/01/16.
  */
@@ -9,10 +7,10 @@ public class Arvutused {
 
 
     Tagasiside tagasiside = new Tagasiside();
-    Randomid randomid = new Randomid();
+    Random random = new Random();
 
     public void jagubMolemaga() {
-        if (randomid.arv%15==0) {
+        if (random.arv%15==0) {
             tagasiside.tubli();
         }
         else {
@@ -23,7 +21,7 @@ public class Arvutused {
 
     public void jagubViiega() {
 
-        if ((randomid.arv)%5==0) {
+        if ((random.arv)%5==0) {
             tagasiside.tubli();
 
         }
@@ -36,7 +34,7 @@ public class Arvutused {
     }
 
     public void jagubKolmega() {
-        if ((randomid.arv)%3==0) {
+        if ((random.arv)%3==0) {
             tagasiside.tubli();
 
         }
