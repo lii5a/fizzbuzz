@@ -1,5 +1,6 @@
 package fizzbuzz;
 
+import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -27,6 +28,11 @@ public class Laud {
 
     Laud() {
         setupScene();
+    }
+
+ public void exit() {
+        Platform.exit();
+        //System.exit(0);
     }
 
     public void setupScene() {

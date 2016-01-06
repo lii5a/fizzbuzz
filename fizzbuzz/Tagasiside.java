@@ -13,7 +13,8 @@ public class Tagasiside {
         tubli.setTitle("Pasunad ja lilled!");
         tubli.setHeaderText("Õige vastus! Said ühe punkti juurde!");
         tubli.showAndWait();
-
+        Laud laud = new Laud();
+        laud.exit();
     }
 
     public void pahasti() {
