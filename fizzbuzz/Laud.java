@@ -23,8 +23,6 @@ public class Laud {
 
     Arvutused arvutused = new Arvutused();
     Tagasiside tagasiside = new Tagasiside();
-    Random random = new Random();
-
 
     Laud() {
         setupScene();
@@ -51,7 +49,7 @@ public class Laud {
 
         // edasi tulevad tekstid ja numbrid ja nupud
 
-        Label genereerinumber = new Label((random.arvStringiks()));
+        Label genereerinumber = new Label((Random.arvStringiks()));
         genereerinumber.setFont(new Font("Helvetica", 300));
         genereerinumber.setTextFill(Color.web("#FF0000"));
         genereerinumber.setTranslateX(50); //viiskend pikslit paremale
@@ -78,7 +76,7 @@ public class Laud {
         kolmega.setOnMouseClicked  (event -> {arvutused.jagubKolmega();}
         );
 
-        Label mittekummagagi = new Label ("MITTE KUMMAGAGI? SIIS LIIDA TALLE " + random.liidetav +":");
+        Label mittekummagagi = new Label ("MITTE KUMMAGAGI? SIIS LIIDA TALLE " + Random.liidetav +":");
         mittekummagagi.setFont(Font.font("Helvetica", FontWeight.BOLD,14));
 
         TextField tekstikoht = new TextField();
@@ -95,7 +93,7 @@ public class Laud {
                     int i = (int)d;
 
 
-                    if (i== random.arv+ random.liidetav) {
+                    if (i== Random.arv+ Random.liidetav) {
                         tagasiside.tubli();
                     }
                     else {

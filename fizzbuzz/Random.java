@@ -5,10 +5,26 @@ package fizzbuzz;
  */
 public class Random {
 
-    static int arv = (int)(Math.random()*10);
-    static int liidetav = (int)(Math.random()*10);
+    public static int arv = teeArv();
+    public static int liidetav = teeLiidetav();
 
-    public String arvStringiks() {
+
+    public static int teeArv() {
+        arv = (int)(Math.random()*10);
+        System.out.println("otse teearv meetodi seest! arv teearv meetodi sees on" + arv);
+        return arv;
+    }
+
+    public static String arvStringiks() {
+        System.out.println("arvstringiks saab aru, et arv on" + String.valueOf(arv));
         return String.valueOf(arv); //selle koha üle olen päris uhke. guugeldasin silm krõllis, Stackoverflow ei aidanud. IDE aitas.
     }
+
+    public static int teeLiidetav() {
+        int liidetav = (int)(Math.random()*10);
+        System.out.println("otse liidetav meetodi seest! liidetav on" + liidetav);
+        return liidetav;
+    }
+
+
 }
