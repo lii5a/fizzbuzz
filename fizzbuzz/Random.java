@@ -10,7 +10,7 @@ public class Random {
 
 
     public static int teeArv() {
-        arv = (int)(Math.random()*10);
+        arv = (int)(Math.random()*20);
         System.out.println("otse teearv meetodi seest! arv teearv meetodi sees on" + arv);
         return arv;
     }
@@ -21,9 +21,14 @@ public class Random {
     }
 
     public static int teeLiidetav() {
-        int liidetav = (int)(Math.random()*10);
+        liidetav = (int)(Math.random()*20);
         System.out.println("otse liidetav meetodi seest! liidetav on" + liidetav);
         return liidetav;
+    }
+
+    public static String liidetavStringiks() {
+        System.out.println("liidetavstringiks saab aru, et liidetav on" + String.valueOf(liidetav));
+        return String.valueOf(liidetav);
     }
 
 
