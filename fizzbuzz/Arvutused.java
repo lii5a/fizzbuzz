@@ -2,10 +2,9 @@ package fizzbuzz;
 
 /**
  * Created by lii5a on 04/01/16.
+ * Klass, kus kontrollitakse kasutaja vastuseid.
  */
 public class Arvutused {
-
-
 
     Tagasiside tagasiside = new Tagasiside();
 
@@ -29,7 +28,6 @@ public class Arvutused {
 
         }
 
-
     }
 
     public void jagubKolmega() {
@@ -40,7 +38,6 @@ public class Arvutused {
             tagasiside.pahasti();
         }
 
-
     }
 
     public void okei() {
@@ -48,7 +45,7 @@ public class Arvutused {
         int i = (int) d;
 
 
-        if (i == Random.arv + Random.liidetav) {
+        if ((Random.arv % 3!=0)&&(Random.arv%5!=0)&&(i == Random.arv + Random.liidetav)) {
             tagasiside.tubli();
         } else {
             tagasiside.pahasti();
