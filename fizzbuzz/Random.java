@@ -10,8 +10,8 @@ public class Random {
 
 
     public static int teeArv() {
-        //arv = (int)(Math.random()*20);
-        arv = 9; //see on siin testimiseks - mugavam on fikseeritud arvu kasutada
+        arv = (int)(Math.random()*20);
+        //arv = 9; //see on siin testimiseks - mugavam on fikseeritud arvu kasutada
         return arv;
     }
 

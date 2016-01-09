@@ -17,7 +17,6 @@ public class Main extends Application {
 
 
 /*todo:
-püüa error kinni, et ikka numbreid kasti sisestaks
 ok-nupp võiks ka enteri (OSXis tühiku) peale reageerida (testi teises ossis)
 
 nicetohave:
