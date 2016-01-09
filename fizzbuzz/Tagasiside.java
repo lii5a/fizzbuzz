@@ -48,13 +48,11 @@ public class Tagasiside {
             System.out.println(skoor);
             return skoor;
         }
-        System.out.println("viimane "+skoor);
-        return skoor;
+        return punkt;
     }
 
     public static String skoorstring(){
-        System.out.println("skoorstringi arvates on skoor" +skoor);
-        return String.valueOf(auhinnad());
+        return String.valueOf(skoor);
     }
 
 
