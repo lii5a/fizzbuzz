@@ -17,7 +17,7 @@ public class Main extends Application {
 
 
 /*todo:
-genereerinumbri joondus võiks parem olla
+gameover alert
 ok-nupp võiks ka enteri (OSXis tühiku) peale reageerida (testi teises ossis)
 
 nicetohave:

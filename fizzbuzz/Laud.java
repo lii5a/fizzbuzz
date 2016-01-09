@@ -53,7 +53,12 @@ public class Laud {
         Label genereerinumber = new Label((Random.arvStringiks()));
         genereerinumber.setFont(new Font("Helvetica", 200));
         genereerinumber.setTextFill(Color.web("#FF0000"));
-        genereerinumber.setTranslateX(15); //niimitu pikslit paremale
+        if (Random.arv<10) {
+            genereerinumber.setTranslateX(70); //niimitu pikslit paremale
+        }
+        else {
+            genereerinumber.setTranslateX(15);//niimitu pikslit paremale
+        }
 
         //EI JAGU KUMMAGAGI SILT
         Label mittekummagagi = new Label ("MITTE KUMMAGAGI? SIIS LIIDA TALLE " + Random.liidetavStringiks() +":");
@@ -67,6 +72,7 @@ public class Laud {
         //SKOOR LABEL
         Label skoor = new Label("Sul on " + Tagasiside.skoorstring() + " punkti.");
         skoor.setFont(Font.font("Helvetica", FontWeight.BOLD, 14));
+        skoor.setTranslateX(80);
 
         //JAGUB MÕLEMAGA NUPP + SELLE TOIMETUSED
         Button jagubMolemaga = new Button ("Mõlemaga");
