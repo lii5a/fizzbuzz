@@ -10,7 +10,7 @@ public class Tagasiside {
 
     static boolean kaivitus = false;
     static int skoor = 0;
-    int punkt;
+    static int punkt;
 
     public void tubli (){
         Alert tubli = new Alert(Alert.AlertType.INFORMATION);
@@ -31,21 +31,28 @@ public class Tagasiside {
         paha.showAndWait();
         kaivitus = true;
         punkt=2;
+        auhinnad();
         new Uus();
     }
 
-    public void auhinnad () {
+    public static int auhinnad() {
 
         if (punkt == 1) {
-            skoor = skoor + 1;
+            skoor = (skoor + 1);
             System.out.println(skoor);
+            return skoor;
         }
-
         else if (punkt == 2){
-            skoor = skoor - 1;
+            skoor = (skoor - 1);
             System.out.println(skoor);
+            return skoor;
         }
+        System.out.println("viimane "+skoor);
+        return skoor;
+    }
 
+    public static String skoorstring(){
+        return String.valueOf(auhinnad());
     }
 
 

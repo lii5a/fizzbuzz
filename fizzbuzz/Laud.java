@@ -64,6 +64,10 @@ public class Laud {
         kasJagub.setFont(new Font("Helvetica", 20));
         kasJagub.setTranslateY(-50);
 
+        //SKOOR LABEL
+        Label skoor = new Label("Sul on " + Tagasiside.skoorstring() + " punkti");
+        skoor.setFont(Font.font("Helvetica", FontWeight.BOLD,14));
+
         //JAGUB MÕLEMAGA NUPP + SELLE TOIMETUSED
         Button jagubMolemaga = new Button ("Mõlemaga");
         jagubMolemaga.setOnMouseClicked(event -> {
@@ -126,6 +130,7 @@ public class Laud {
         kastid.add(mittekummagagi, 2,3);
         kastid.add(tekstikoht, 2,4);
         kastid.add(OK, 2,5);
+        kastid.add(skoor, 2,6);
         OK.setDefaultButton(true); //pärast pikka pusimist sain siit 133 realt idee, kuidas ok-nuppu ühildada enteriga/spacega. macijama. https://gist.github.com/jewelsea/3081826
 
     }
