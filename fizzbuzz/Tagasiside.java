@@ -9,8 +9,8 @@ import javafx.stage.Stage;
 public class Tagasiside {
 
     static boolean kaivitus = false;
-    int skoor = 0;
-    boolean punkt;
+    static int skoor = 0;
+    int punkt;
 
     public void tubli (){
         Alert tubli = new Alert(Alert.AlertType.INFORMATION);
@@ -18,11 +18,12 @@ public class Tagasiside {
         tubli.setHeaderText("Õige vastus! Said ühe punkti juurde!");
         tubli.showAndWait();
         kaivitus = true;
+        punkt=1;
+
         auhinnad();
         new Uus();
 
         //Laud.exit(); //kogu kupatus läeb kinni ja enam ei avane.
-        //Laud laud = new Laud(); //teeb uue laua.
     }
 
     public void pahasti() {
@@ -31,26 +32,20 @@ public class Tagasiside {
         paha.setHeaderText("See läks nüüd vähe mööda. Kaotasid ühe punkti :(");
         paha.showAndWait();
         kaivitus = true;
+        punkt=2;
         new Uus();
-
-        //Laud laud = new Laud();
     }
 
     public void auhinnad () {
 
-        if ((punkt == true) && (Laud.molemad == true)) {
-            skoor = skoor + 3;
-            System.out.println(skoor);
 
-        }
-
-        else if ((punkt == true) && (Laud.molemad == false)) {
+        if (punkt == 1) {
             skoor = skoor + 1;
             System.out.println(skoor);
         }
 
-        else if (punkt == false) {
-            skoor = skoor-1;
+        else if (punkt == 2){
+            skoor = skoor - 1;
             System.out.println(skoor);
         }
 
