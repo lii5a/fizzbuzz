@@ -17,6 +17,7 @@ public class Main extends Application {
 
 
 /*todo:
+genereerinumbri joondus võiks parem olla
 ok-nupp võiks ka enteri (OSXis tühiku) peale reageerida (testi teises ossis)
 
 nicetohave:

@@ -25,6 +25,18 @@ public class Tagasiside {
 
     }
 
+    public void erititubli (){
+        Alert tubli = new Alert(Alert.AlertType.INFORMATION);
+        tubli.setTitle("Pasunad ja lilled!");
+        tubli.setHeaderText("Tublisti märgatud! Said suisa kolm punkti juurde!");
+        tubli.showAndWait();
+        kaivitus = true;
+        punkt=3;
+        auhinnad();
+        new Uus();
+
+    }
+
     public void pahasti() {
         Alert paha = new Alert(Alert.AlertType.INFORMATION);
         paha.setTitle("Pahasti!");
@@ -40,12 +52,14 @@ public class Tagasiside {
 
         if (punkt == 1) {
             skoor = (skoor + 1);
-            System.out.println(skoor);
             return skoor;
         }
         else if (punkt == 2){
             skoor = (skoor - 1);
-            System.out.println(skoor);
+            return skoor;
+        }
+        else if (punkt ==3){
+            skoor = (skoor +3);
             return skoor;
         }
         return punkt;

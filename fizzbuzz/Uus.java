@@ -7,7 +7,7 @@ public class Uus {
 
     public Uus() {
 
-        if (Tagasiside.skoor < 3) {
+        if (Tagasiside.skoor < 5) {
             Laud.tekstikoht.setText("");
             Random.teeArv();
             Random.teeLiidetav();

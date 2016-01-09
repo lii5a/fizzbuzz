@@ -14,7 +14,7 @@ public class Arvutused {
     public void jagubMolemaga() {
 
         if ((Random.arv % 15 == 0)) {
-            tagasiside.tubli();
+            tagasiside.erititubli();
         } else {
             tagasiside.pahasti();
 
