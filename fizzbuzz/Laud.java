@@ -20,6 +20,9 @@ import javafx.stage.WindowEvent;
  */
 public class Laud {
     Stage mangulaud = new Stage();
+    static TextField tekstikoht = new TextField();
+    static boolean molemad = false;
+
 
     Arvutused arvutused = new Arvutused();
     Tagasiside tagasiside = new Tagasiside();
@@ -28,14 +31,15 @@ public class Laud {
         setupScene();
     }
 
- public void exit() {
-        Platform.exit();
-        //System.exit(0);
+ public static void exit() {
+     Platform.exit();
+     System.exit(0);
     }
 
     public void setupScene() {
         mangulaud.setOnCloseRequest((WindowEvent event) -> {System.exit(0); });
         mangulaud.setTitle("Sisin-susin");
+
 
         GridPane kastid = new GridPane(); //teen uue layouti - kastid, sest seal on hea koordinaate määrata, kujundada
         kastid.setAlignment(Pos.CENTER); //kastivärk on akna keskel
@@ -46,26 +50,29 @@ public class Laud {
         //mangulaud.setResizable(false); //kui see käiku lasta, ei saa akent suure(ma)ks teha.
 
 
-
         // edasi tulevad tekstid ja numbrid ja nupud
-
         Label genereerinumber = new Label((Random.arvStringiks()));
-        genereerinumber.setFont(new Font("Helvetica", 300));
+        genereerinumber.setFont(new Font("Helvetica", 200));
         genereerinumber.setTextFill(Color.web("#FF0000"));
-        genereerinumber.setTranslateX(50); //viiskend pikslit paremale
+        genereerinumber.setTranslateX(15); //niimitu pikslit paremale
 
         Label kasJagub = new Label("JAGUB KOLME VÕI VIIEGA?");
         kasJagub.setFont(new Font("Helvetica", 20));
         kasJagub.setTranslateY(-50);
 
         Button jagubMolemaga = new Button ("Mõlemaga");
-        jagubMolemaga.setOnMouseClicked(event -> {arvutused.jagubMolemaga();
+        jagubMolemaga.setOnMouseClicked(event -> {
+                    arvutused.jagubMolemaga();
+                    molemad = true;
+
+
                 }
         );
 
         Button viiega = new Button ("Viiega");
         viiega.setTranslateX(110);
-        viiega.setOnMouseClicked(event -> {arvutused.jagubViiega();
+        viiega.setOnMouseClicked(event -> {
+                    arvutused.jagubViiega();
                 }
         );
 
@@ -73,13 +80,15 @@ public class Laud {
         Button kolmega = new Button ("Kolmega");
         kolmega.setTranslateX(195);
 
-        kolmega.setOnMouseClicked  (event -> {arvutused.jagubKolmega();}
+        kolmega.setOnMouseClicked  (event -> {
+                    arvutused.jagubKolmega();
+
+                }
         );
 
-        Label mittekummagagi = new Label ("MITTE KUMMAGAGI? SIIS LIIDA TALLE " + Random.liidetav +":");
+        Label mittekummagagi = new Label ("MITTE KUMMAGAGI? SIIS LIIDA TALLE " + Random.liidetavStringiks() +":");
         mittekummagagi.setFont(Font.font("Helvetica", FontWeight.BOLD,14));
 
-        TextField tekstikoht = new TextField();
         tekstikoht.setPromptText("VASTUS");
         tekstikoht.setMaxWidth(70);
         tekstikoht.setTranslateX(95);
@@ -87,21 +96,7 @@ public class Laud {
         Button OK = new Button("OK");
         OK.setTranslateX(110);
 
-        OK.setOnMouseClicked(event ->  {
-
-                    double d = Double.parseDouble(tekstikoht.getText()); //selle häki googeldasin siit: http://stackoverflow.com/questions/4753339/convert-textfield-value-to-int
-                    int i = (int)d;
-
-
-                    if (i== Random.arv+ Random.liidetav) {
-                        tagasiside.tubli();
-                    }
-                    else {
-                        tagasiside.pahasti();
-                    }
-
-                }
-        );
+        OK.setOnMouseClicked(event ->  {arvutused.okei();});
 
         kastid.add(genereerinumber, 2, 1); //veerg, rida
         kastid.add(kasJagub, 2, 2);
@@ -114,4 +109,5 @@ public class Laud {
         OK.setDefaultButton(true); //pärast pikka pusimist sain siit 133 realt idee, kuidas ok-nuppu ühildada enteriga/spacega. macijama. https://gist.github.com/jewelsea/3081826
 
     }
+
 }

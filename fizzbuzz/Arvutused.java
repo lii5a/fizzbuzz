@@ -6,13 +6,14 @@ package fizzbuzz;
 public class Arvutused {
 
 
+
     Tagasiside tagasiside = new Tagasiside();
 
     public void jagubMolemaga() {
-        if (Random.arv%15==0) {
+
+        if ((Random.arv % 15 == 0)) {
             tagasiside.tubli();
-        }
-        else {
+        } else {
             tagasiside.pahasti();
 
         }
@@ -20,11 +21,10 @@ public class Arvutused {
 
     public void jagubViiega() {
 
-        if ((Random.arv)%5==0) {
+        if ((Random.arv % 5 == 0)) {
             tagasiside.tubli();
 
-        }
-        else {
+        } else {
             tagasiside.pahasti();
 
         }
@@ -33,13 +33,25 @@ public class Arvutused {
     }
 
     public void jagubKolmega() {
-        if ((Random.arv)%3==0) {
+        if ((Random.arv % 3 == 0)) {
             tagasiside.tubli();
 
-        }
-        else {
+        } else {
             tagasiside.pahasti();
+        }
 
+
+    }
+
+    public void okei() {
+        double d = Double.parseDouble(Laud.tekstikoht.getText()); //selle häki googeldasin siit: http://stackoverflow.com/questions/4753339/convert-textfield-value-to-int
+        int i = (int) d;
+
+
+        if (i == Random.arv + Random.liidetav) {
+            tagasiside.tubli();
+        } else {
+            tagasiside.pahasti();
         }
 
     }
@@ -54,8 +66,8 @@ public class Arvutused {
         }
     }*/
 
-
 }
+
 
 
 
