@@ -20,8 +20,8 @@ import javafx.stage.WindowEvent;
  */
 public class Laud {
     Stage mangulaud = new Stage();
-    static TextField tekstikoht = new TextField();
     static boolean molemad = false;
+    static TextField tekstikoht = new TextField(); //vaja siin defineerida, et pärast arvutuste-klassis talle ligi pääseda
 
 
     Arvutused arvutused = new Arvutused();
@@ -51,53 +51,83 @@ public class Laud {
 
 
         // edasi tulevad tekstid ja numbrid ja nupud
+
+        //NUMBRISILT
+     /*   Nr uusnumber = new Nr();
+        uusnumber.siltproperty().addListener((v,oldValue, newValue) -> {
+            System.out.println("silt muutus nüüd uueks");
+        });
+*/
         Label genereerinumber = new Label((Random.arvStringiks()));
         genereerinumber.setFont(new Font("Helvetica", 200));
         genereerinumber.setTextFill(Color.web("#FF0000"));
         genereerinumber.setTranslateX(15); //niimitu pikslit paremale
 
+        //EI JAGU KUMMAGAGI SILT
+        Label mittekummagagi = new Label ("MITTE KUMMAGAGI? SIIS LIIDA TALLE " + Random.liidetavStringiks() +":");
+        mittekummagagi.setFont(Font.font("Helvetica", FontWeight.BOLD,14));
+
+
+        //"KAS JAGUB" LABEL
         Label kasJagub = new Label("JAGUB KOLME VÕI VIIEGA?");
         kasJagub.setFont(new Font("Helvetica", 20));
         kasJagub.setTranslateY(-50);
 
+
+        //JAGUB MÕLEMAGA NUPP + SELLE TOIMETUSED
         Button jagubMolemaga = new Button ("Mõlemaga");
         jagubMolemaga.setOnMouseClicked(event -> {
                     arvutused.jagubMolemaga();
                     molemad = true;
-
+                    if (Tagasiside.kaivitus == true){
+                        genereerinumber.setText(Random.arvStringiks());
+                        mittekummagagi.setText("MITTE KUMMAGAGI? SIIS LIIDA TALLE " +Random.liidetavStringiks());
+                    }
 
                 }
         );
 
+        //JAGUB VIIEGA NUPP + SELLE TOIMETUSED
         Button viiega = new Button ("Viiega");
         viiega.setTranslateX(110);
         viiega.setOnMouseClicked(event -> {
                     arvutused.jagubViiega();
+                    if (Tagasiside.kaivitus == true){
+                        genereerinumber.setText(Random.arvStringiks());
+                        mittekummagagi.setText("MITTE KUMMAGAGI? SIIS LIIDA TALLE " +Random.liidetavStringiks());
+                    }
                 }
         );
 
-
+        //JAGUB KOLMEGA NUPP + SELLE TOIMETUSED
         Button kolmega = new Button ("Kolmega");
         kolmega.setTranslateX(195);
-
         kolmega.setOnMouseClicked  (event -> {
                     arvutused.jagubKolmega();
+                    if (Tagasiside.kaivitus == true){
+                        genereerinumber.setText(Random.arvStringiks());
+                        mittekummagagi.setText("MITTE KUMMAGAGI? SIIS LIIDA TALLE " +Random.liidetavStringiks());
+                    }
 
                 }
         );
 
-        Label mittekummagagi = new Label ("MITTE KUMMAGAGI? SIIS LIIDA TALLE " + Random.liidetavStringiks() +":");
-        mittekummagagi.setFont(Font.font("Helvetica", FontWeight.BOLD,14));
-
+        //TEKSTIVÄLI, KUHU KASUTAJA VASTUSE SISESTAB
         tekstikoht.setPromptText("VASTUS");
         tekstikoht.setMaxWidth(70);
         tekstikoht.setTranslateX(95);
 
+        //OKEI-NUPP + SELLE TOIMETUSED
         Button OK = new Button("OK");
         OK.setTranslateX(110);
+        OK.setOnMouseClicked(event ->  {arvutused.okei();
+            if (Tagasiside.kaivitus == true){
+                genereerinumber.setText(Random.arvStringiks());
+                mittekummagagi.setText("MITTE KUMMAGAGI? SIIS LIIDA TALLE " +Random.liidetavStringiks());
+            }
+        });
 
-        OK.setOnMouseClicked(event ->  {arvutused.okei();});
-
+        //ELEMETIDE PAIGUTUS GRIDI
         kastid.add(genereerinumber, 2, 1); //veerg, rida
         kastid.add(kasJagub, 2, 2);
         kastid.add(jagubMolemaga, 2,2);

@@ -10,8 +10,8 @@ public class Random {
 
 
     public static int teeArv() {
-        //arv = (int)(Math.random()*20);
-        arv = 15;
+        arv = (int)(Math.random()*20);
+        //arv = 15;
         return arv;
     }
 
