@@ -19,9 +19,8 @@ public class Tagasiside {
         tubli.showAndWait();
         kaivitus = true;
         auhinnad();
-        Laud.tekstikoht.setText("");
-        Random.teeArv();
-        Random.teeLiidetav();
+        new Uus();
+
         //Laud.exit(); //kogu kupatus läeb kinni ja enam ei avane.
         //Laud laud = new Laud(); //teeb uue laua.
     }
@@ -32,9 +31,8 @@ public class Tagasiside {
         paha.setHeaderText("See läks nüüd vähe mööda. Kaotasid ühe punkti :(");
         paha.showAndWait();
         kaivitus = true;
-        Laud.tekstikoht.setText("");
-        Random.teeArv();
-        Random.teeLiidetav();
+        new Uus();
+
         //Laud laud = new Laud();
     }
 
