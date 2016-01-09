@@ -56,25 +56,7 @@ public class Arvutused {
 
     }
 
-   /* public void arvutusevastus() {
-
-        if (main.sisestus==arv+liidetav) {
-            tagasiside.tubli();
-        }
-        else {
-            tagasiside.pahasti();
-        }
-    }*/
-
 }
 
 
 
-
-      /*  private int skoor() { //proovin siin skoori käima saada.
-        int skoor = 0;
-        if (tagasisideTubli()) {
-            skoor = skoor + 1;
-        }
-        return skoor;
-    }*/

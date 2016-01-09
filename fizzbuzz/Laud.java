@@ -15,17 +15,15 @@ import javafx.stage.WindowEvent;
 
 /**
  * Created by lii5a on 05/01/16.
- * selle klassi viksisin enamjaolt Kristeri pealt maha (viimase praksi GUI-seadistus)
+ * selle klassi viksisin alguses enamjaolt Kristeri pealt maha (viimase praksi GUI-seadistus)
  * https://github.com/KristerV/javaHarjutused/blob/lahendused/src/teema3/SQL_Login/LoginScreen.java
  */
 public class Laud {
     Stage mangulaud = new Stage();
     static boolean molemad = false;
-    static TextField tekstikoht = new TextField(); //vaja siin defineerida, et pärast arvutuste-klassis talle ligi pääseda
-
+    static TextField tekstikoht = new TextField(); //tekstikoht on vaja siin defineerida, et pärast arvutuste-klassis talle ligi pääseda
 
     Arvutused arvutused = new Arvutused();
-    Tagasiside tagasiside = new Tagasiside();
 
     Laud() {
         setupScene();
@@ -37,9 +35,10 @@ public class Laud {
     }
 
     public void setupScene() {
+
+        //LAVA, PANE, STSEEN
         mangulaud.setOnCloseRequest((WindowEvent event) -> {System.exit(0); });
         mangulaud.setTitle("Sisin-susin");
-
 
         GridPane kastid = new GridPane(); //teen uue layouti - kastid, sest seal on hea koordinaate määrata, kujundada
         kastid.setAlignment(Pos.CENTER); //kastivärk on akna keskel
@@ -50,14 +49,7 @@ public class Laud {
         //mangulaud.setResizable(false); //kui see käiku lasta, ei saa akent suure(ma)ks teha.
 
 
-        // edasi tulevad tekstid ja numbrid ja nupud
-
         //NUMBRISILT
-     /*   Nr uusnumber = new Nr();
-        uusnumber.siltproperty().addListener((v,oldValue, newValue) -> {
-            System.out.println("silt muutus nüüd uueks");
-        });
-*/
         Label genereerinumber = new Label((Random.arvStringiks()));
         genereerinumber.setFont(new Font("Helvetica", 200));
         genereerinumber.setTextFill(Color.web("#FF0000"));
@@ -67,12 +59,10 @@ public class Laud {
         Label mittekummagagi = new Label ("MITTE KUMMAGAGI? SIIS LIIDA TALLE " + Random.liidetavStringiks() +":");
         mittekummagagi.setFont(Font.font("Helvetica", FontWeight.BOLD,14));
 
-
         //"KAS JAGUB" LABEL
         Label kasJagub = new Label("JAGUB KOLME VÕI VIIEGA?");
         kasJagub.setFont(new Font("Helvetica", 20));
         kasJagub.setTranslateY(-50);
-
 
         //JAGUB MÕLEMAGA NUPP + SELLE TOIMETUSED
         Button jagubMolemaga = new Button ("Mõlemaga");

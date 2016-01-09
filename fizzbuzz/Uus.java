@@ -5,7 +5,6 @@ package fizzbuzz;
  */
 public class Uus {
 
-
     public Uus() {
 
         if (Tagasiside.skoor < 3) {

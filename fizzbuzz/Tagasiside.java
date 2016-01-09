@@ -19,11 +19,9 @@ public class Tagasiside {
         tubli.showAndWait();
         kaivitus = true;
         punkt=1;
-
         auhinnad();
         new Uus();
 
-        //Laud.exit(); //kogu kupatus läeb kinni ja enam ei avane.
     }
 
     public void pahasti() {
@@ -38,7 +36,6 @@ public class Tagasiside {
 
     public void auhinnad () {
 
-
         if (punkt == 1) {
             skoor = skoor + 1;
             System.out.println(skoor);
@@ -48,8 +45,6 @@ public class Tagasiside {
             skoor = skoor - 1;
             System.out.println(skoor);
         }
-
-
 
     }
 
