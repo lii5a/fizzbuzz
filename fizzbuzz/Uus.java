@@ -5,10 +5,15 @@ package fizzbuzz;
  */
 public class Uus {
 
-    public Uus() {
-        Laud.tekstikoht.setText("");
-        Random.teeArv();
-        Random.teeLiidetav();
-    }
 
+    public Uus() {
+
+        if (Tagasiside.skoor < 3) {
+            Laud.tekstikoht.setText("");
+            Random.teeArv();
+            Random.teeLiidetav();
+        } else {
+            Laud.exit();
+        }
+    }
 }
