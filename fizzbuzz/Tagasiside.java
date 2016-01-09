@@ -5,6 +5,7 @@ import javafx.stage.Stage;
 
 /**
  * Created by lii5a on 04/01/16.
+ * Siin klassis kutsutakse välja teade - kas õige või vale ja kutsutakse välja sündmused, mis ühele või teisele teatele järgnema peavad.
  */
 public class Tagasiside {
 
@@ -52,6 +53,7 @@ public class Tagasiside {
     }
 
     public static String skoorstring(){
+        System.out.println("skoorstringi arvates on skoor" +skoor);
         return String.valueOf(auhinnad());
     }
 

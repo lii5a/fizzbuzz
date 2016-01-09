@@ -19,8 +19,7 @@ public class Main extends Application {
 /*todo:
 skoori pidada ja näidata
 püüa error kinni, et ikka numbreid kasti sisestaks
-ok-nupp võiks ka enteri peale reageerida (testi teises ossis)
-ei saa liita liidetavat, kui jagub kolme ja/või viiega.
+ok-nupp võiks ka enteri (OSXis tühiku) peale reageerida (testi teises ossis)
 
 nicetohave:
 nupud ütlevad "sisista" ja "susista" ja "sissussista" + hääl

@@ -66,7 +66,7 @@ public class Laud {
 
         //SKOOR LABEL
         Label skoor = new Label("Sul on " + Tagasiside.skoorstring() + " punkti");
-        skoor.setFont(Font.font("Helvetica", FontWeight.BOLD,14));
+        skoor.setFont(Font.font("Helvetica", FontWeight.BOLD, 14));
 
         //JAGUB MÕLEMAGA NUPP + SELLE TOIMETUSED
         Button jagubMolemaga = new Button ("Mõlemaga");
@@ -76,6 +76,7 @@ public class Laud {
                     if (Tagasiside.kaivitus == true){
                         genereerinumber.setText(Random.arvStringiks());
                         mittekummagagi.setText("MITTE KUMMAGAGI? SIIS LIIDA TALLE " +Random.liidetavStringiks());
+                        skoor.setText("Sul on" + Tagasiside.skoorstring() + "punkti");
                     }
 
                 }
@@ -89,6 +90,7 @@ public class Laud {
                     if (Tagasiside.kaivitus == true){
                         genereerinumber.setText(Random.arvStringiks());
                         mittekummagagi.setText("MITTE KUMMAGAGI? SIIS LIIDA TALLE " +Random.liidetavStringiks());
+                        skoor.setText("Sul on" + Tagasiside.skoorstring() + "punkti");
                     }
                 }
         );
@@ -101,6 +103,7 @@ public class Laud {
                     if (Tagasiside.kaivitus == true){
                         genereerinumber.setText(Random.arvStringiks());
                         mittekummagagi.setText("MITTE KUMMAGAGI? SIIS LIIDA TALLE " +Random.liidetavStringiks());
+                        skoor.setText("Sul on" + Tagasiside.skoorstring() + "punkti");
                     }
 
                 }
@@ -118,6 +121,7 @@ public class Laud {
             if (Tagasiside.kaivitus == true){
                 genereerinumber.setText(Random.arvStringiks());
                 mittekummagagi.setText("MITTE KUMMAGAGI? SIIS LIIDA TALLE " +Random.liidetavStringiks());
+                skoor.setText("Sul on" + Tagasiside.skoorstring() + "punkti");
             }
         });
 
